@@ -1,0 +1,49 @@
+﻿@model IEnumerable<HealthScreening.Models.consultation>
+
+@{
+    ViewBag.Title = "viewconsultation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br /><br /><br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.doctorid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.patientid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.updatedat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.consultationnotes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hospitalname)
+        </th>
+
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.doctorid)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.patientid)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.updatedat)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.consultationnotes)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.hospitalname)
+    </td>
+
+</tr>
+}
+
+</table>

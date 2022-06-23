@@ -1,0 +1,53 @@
+﻿@using HealthScreening.Models;
+@{
+    ViewBag.Title = "tagdoctor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    td{
+        padding-top:10px;
+        padding-left:10px
+    }
+</style>
+<br /><br /><br />
+@using(Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td>
+                Select Patient
+            </td>
+            <td>
+                <select id="patient1" name="patient1">
+                    @foreach (Patient p in ViewBag.patients)
+                    {
+                        <option value="@p.userid">@p.userid</option>
+                    }
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Select Doctor
+            </td>
+            <td>
+                <select id="doctor1" name="doctor1">
+                    @foreach (Doctor p in ViewBag.doctors)
+                    {
+                        <option value="@p.doctorid">@p.doctorid</option>
+                    }
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <input type="submit" value="Add Doctor" />
+                   </td>
+        </tr>
+    </table>
+}
+<br /><br /><br />
+<div style="color:red;font-weight:bold">
+    @ViewBag.error
+</div>
+

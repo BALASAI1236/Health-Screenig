@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Doctorlogin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    td {
+        padding-left: 20px;
+        padding-top: 20px;
+    }
+</style>
+<br />
+<br />
+<br />
+
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td>User ID</td>
+            <td><input type="text" id="userid" name="userid" /></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" id="password" name="password" /></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Login" onclick="return checkme()" />
+            </td>
+        </tr>
+    </table>
+}
+<script type="text/javascript">
+    function checkme() {
+        if (document.getElementById("userid").value == "") {
+            alert("Please provide userid");
+            return false;
+        }
+        else if (document.getElementById("password").value == "") {
+            alert("Please provide password");
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+</script>
+
+<div style="color:red;font-weight:bold">
+    @ViewBag.error
+</div>

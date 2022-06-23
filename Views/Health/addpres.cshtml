@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "addpres";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    td {
+        padding-left: 10px;
+        padding-top: 10px;
+    }
+</style>
+<br />
+<br />
+<br />
+
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td>Add Prescription</td>
+            <td><textarea rows="5" cols="50" id="presc" name="presc"></textarea></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Add prescription" onclick="return check()" /></td>
+        </tr>
+    </table>
+    <input type="hidden" name="val" id="val" />
+}
+<script type="text/javascript">
+    function check() {
+        if (document.getElementById("presc").value == "") {
+            alert("Please enter prescription");
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+</script>
+

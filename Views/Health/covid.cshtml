@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "covid";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    td {
+        padding-left: 20px;
+        padding-top: 20px;
+    }
+</style>
+
+    <br />
+    <br />
+    <h2>Please fill this form only if you are affected with Covid</h2>
+    <br />
+    @using (Html.BeginForm())
+    {
+        <table>
+            <tr>
+                <td>Covid Affected Date : </td>
+                <td><input type="date" name="affecteddate" id="affecteddate"></td>
+            </tr>
+            <tr>
+                <td>Post Covid Problems : </td>
+                <td><textarea id="post" name="post" rows="4" cols="100"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Update Profile" onclick="return checkme()" />
+                </td>
+            </tr>
+        </table>
+    }
+
+    <div style="color:red;font-weight:bold">
+        @ViewBag.error
+    </div>
+<script type="text/javascript">
+      function checkme() {
+            if (document.getElementById("affecteddate").value == "") {
+                alert("Please provide affecteddate");
+                return false;
+            }
+            else if (document.getElementById("post").value == "") {
+                alert("Please provide Post Covid Issues");
+                return false;
+            }
+            else {
+                var afdate = new Date(document.getElementById('affecteddate').value);
+                 var today = new Date();
+               var todaydate = new Date(today.getFullYear(),today.getMonth(),today.getDate());
+                if (afdate > today) {
+                    alert("You cannot have future date as affected date");
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }
+        }
+</script>
+

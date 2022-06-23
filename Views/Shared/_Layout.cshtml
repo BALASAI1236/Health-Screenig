@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body style="background-color:cornsilk">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Home", "Health")</li>
+                    @if (Session["userid"] == null)
+                    {
+                        <li>@Html.ActionLink("Doctor Signup", "Doctorsignup", "Health")</li>
+                        <li>@Html.ActionLink("Patient Signup", "Patientsignup", "Health")</li>
+                        <li>@Html.ActionLink("Doctor Login", "Doctorlogin", "Health")</li>
+                        <li>@Html.ActionLink("Patient Login", "Patientlogin", "Health")</li>
+                        <li>@Html.ActionLink("Admin Login", "adminlogin", "Health")</li>
+                    }
+                    else if (Session["role"].ToString() == "patient")
+                    {
+                        <li>@Html.ActionLink("Covid Profile", "covid", "Health")</li>
+                        <li>@Html.ActionLink("View Prescriptions", "viewprescriptions", "Health")</li>
+                        <li>@Html.ActionLink("View Consultation notes", "viewconsultation", "Health")</li>
+                        <li>@Html.ActionLink("View Bills", "viewbills", "Health")</li>
+                        <li>@Html.ActionLink("Logout", "logout", "Health")</li>
+                    }
+                    else if (Session["role"].ToString() == "admin")
+                    {
+                        <li>@Html.ActionLink("Add Doctor", "tagdoctor", "Health")</li>
+                        <li>@Html.ActionLink("Remove Doctor", "untagdoctor", "Health")</li>
+                        <li>@Html.ActionLink("Add Patient Bills", "addbills", "Health")</li>
+                        <li>@Html.ActionLink("Logout", "logout", "Health")</li>
+                    }
+                    else if (Session["role"].ToString() == "doctor")
+                    {
+                        <li>@Html.ActionLink("Add Prescription", "addprescription", "Health")</li>
+                        <li>@Html.ActionLink("Add Consultation Notes", "addconsultation", "Health")</li>
+                        <li>@Html.ActionLink("View My Patients", "viewpatients", "Health")</li>
+                        <li>@Html.ActionLink("Logout", "logout", "Health")</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

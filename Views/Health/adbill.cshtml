@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "adbill";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    td
+    {
+        padding-left:10px;
+        padding-top:10px;
+    }
+</style>
+<br />
+<br />
+<br />
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td>
+                Add Bill Amount
+            </td>
+            <td>
+                <input type="text" name="billamount" id="billamount" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Add bill" onclick="return validate()" /></td>
+        </tr>
+    </table>
+    <input type="hidden" name="hid" id="hid" />
+}
+<script type="text/javascript">
+    function validate() {
+        if (document.getElementById("billamount").value == "") {
+            alert("Please enter bill amount");
+            return false
+        }
+        return true;
+    }
+</script>
